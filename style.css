@@ -423,7 +423,7 @@ body::before{
 
     pointer-events:none;
 
-    transition:1.5s;
+    transition:1.5s ease;
 
 }
 
@@ -487,7 +487,31 @@ body::before{
 
 .page.active{
 
+    .page.active{
+
     display:block;
+
+    animation:pageFade .8s ease;
+
+}
+
+@keyframes pageFade{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(20px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
 
 }
 /* =======================================================
