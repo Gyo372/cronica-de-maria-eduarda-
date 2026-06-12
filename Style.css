@@ -1,0 +1,750 @@
+/* =======================================================
+   CRÔNICA DE MARIA EDUARDA
+   STYLE.CSS
+   PARTE 1
+======================================================= */
+
+/* =========================
+   RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    width:100%;
+    height:100vh;
+
+    overflow:hidden;
+
+    background:#050505;
+
+    font-family:'Cormorant Garamond',serif;
+
+    color:white;
+
+    position:relative;
+
+}
+
+/* =========================
+   VARIÁVEIS
+========================= */
+
+:root{
+
+    --gold:#d4af37;
+
+    --gold-light:#f3d97c;
+
+    --paper:#f8ecd0;
+
+    --paper-dark:#ecd4a1;
+
+    --ink:#4d3418;
+
+    --wood:#5e3b17;
+
+    --shadow:rgba(0,0,0,.4);
+
+    --night:#08111d;
+
+    --sunset:#ffbb55;
+
+}
+
+/* =========================
+   CÉU
+========================= */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:-20;
+
+    background:
+
+    linear-gradient(
+        to bottom,
+        #ffb347,
+        #ff9966,
+        #1f2947
+    );
+
+    animation:skyTransition 120s linear forwards;
+
+}
+
+@keyframes skyTransition{
+
+    0%{
+
+        filter:saturate(1);
+
+    }
+
+    100%{
+
+        filter:brightness(.55)
+               saturate(.8);
+
+    }
+
+}
+
+/* =========================
+   CASTELO
+========================= */
+
+.castle-background{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:-15;
+
+    background-image:url(
+    "https://images.unsplash.com/photo-1518709268805-4e9042af2176?q=80&w=1800&auto=format&fit=crop"
+    );
+
+    background-size:cover;
+
+    background-position:center;
+
+    opacity:.35;
+
+    transform:scale(1.05);
+
+    animation:castleFloat 30s ease-in-out infinite;
+
+}
+
+@keyframes castleFloat{
+
+    0%{
+        transform:scale(1.05)
+                  translateY(0px);
+    }
+
+    50%{
+        transform:scale(1.08)
+                  translateY(-12px);
+    }
+
+    100%{
+        transform:scale(1.05)
+                  translateY(0px);
+    }
+
+}
+
+/* =========================
+   ESCURECIMENTO
+========================= */
+
+.intro-overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+    linear-gradient(
+        rgba(0,0,0,.3),
+        rgba(0,0,0,.6)
+    );
+
+}
+
+/* =========================
+   NÉVOA
+========================= */
+
+.fog-layer{
+
+    position:absolute;
+
+    inset:0;
+
+    z-index:2;
+
+    pointer-events:none;
+
+}
+
+.fog-1{
+
+    background:
+
+    radial-gradient(
+        circle,
+        rgba(255,255,255,.08),
+        transparent 70%
+    );
+
+    animation:fogMove1 35s linear infinite;
+
+}
+
+.fog-2{
+
+    background:
+
+    radial-gradient(
+        circle,
+        rgba(255,255,255,.05),
+        transparent 70%
+    );
+
+    animation:fogMove2 55s linear infinite;
+
+}
+
+@keyframes fogMove1{
+
+    from{
+
+        transform:
+        translateX(-15%)
+        translateY(0);
+
+    }
+
+    to{
+
+        transform:
+        translateX(15%)
+        translateY(-2%);
+
+    }
+
+}
+
+@keyframes fogMove2{
+
+    from{
+
+        transform:
+        translateX(20%)
+        translateY(0);
+
+    }
+
+    to{
+
+        transform:
+        translateX(-20%)
+        translateY(4%);
+
+    }
+
+}
+
+/* =========================
+   INTRO
+========================= */
+
+#intro-screen{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-direction:column;
+
+    z-index:1000;
+
+}
+
+.seal-container{
+
+    z-index:10;
+
+    text-align:center;
+
+}
+
+.seal-container h1{
+
+    margin-top:30px;
+
+    font-family:'Cinzel',serif;
+
+    font-size:clamp(
+        2rem,
+        4vw,
+        4rem
+    );
+
+    color:var(--gold);
+
+    text-shadow:
+    0 0 15px rgba(212,175,55,.5);
+
+}
+
+.seal-container p{
+
+    margin-top:15px;
+
+    font-size:1.3rem;
+
+}
+
+.seal-container small{
+
+    display:block;
+
+    margin-top:15px;
+
+    opacity:.8;
+
+}
+
+/* =========================
+   SELO
+========================= */
+
+#royal-seal{
+
+    width:180px;
+
+    height:180px;
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    position:relative;
+
+    margin:auto;
+
+    background:
+
+    radial-gradient(
+        circle at top,
+        #b60000,
+        #5d0000
+    );
+
+    box-shadow:
+
+    0 0 25px rgba(255,0,0,.4),
+
+    0 0 50px rgba(255,0,0,.25),
+
+    inset 0 5px 10px rgba(255,255,255,.2);
+
+    animation:
+    sealPulse 3s ease infinite;
+
+}
+
+.seal-inner{
+
+    position:absolute;
+
+    inset:15px;
+
+    border-radius:50%;
+
+    border:3px solid rgba(255,255,255,.25);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:4rem;
+
+}
+
+@keyframes sealPulse{
+
+    0%{
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        transform:scale(1.05);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+/* =========================
+   LIVRO
+========================= */
+
+#book-wrapper{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:1.5s;
+
+}
+
+#book-wrapper.active{
+
+    opacity:1;
+
+    pointer-events:auto;
+
+}
+
+#book{
+
+    width:min(
+        92vw,
+        700px
+    );
+
+    height:min(
+        82vh,
+        850px
+    );
+
+    position:relative;
+
+}
+
+/* =========================
+   PÁGINAS
+========================= */
+
+.page{
+
+    position:absolute;
+
+    inset:0;
+
+    display:none;
+
+    padding:50px;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    background:
+
+    linear-gradient(
+        135deg,
+        var(--paper),
+        var(--paper-dark)
+    );
+
+    color:var(--ink);
+
+    box-shadow:
+
+    0 25px 80px rgba(0,0,0,.55);
+
+}
+
+.page.active{
+
+    display:block;
+
+}
+/* =======================================================
+   PART 2 - ESTRELAS, PÉTALAS, VELAS E CONTEÚDO
+======================================================= */
+
+/* =========================
+   ESTRELAS
+========================= */
+
+#star-container{
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    z-index:-5;
+
+}
+
+.star{
+
+    position:absolute;
+
+    width:2px;
+
+    height:2px;
+
+    background:white;
+
+    border-radius:50%;
+
+    animation:twinkle infinite ease-in-out;
+
+}
+
+@keyframes twinkle{
+
+    0%{
+
+        opacity:.2;
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        opacity:1;
+
+        transform:scale(1.6);
+
+    }
+
+    100%{
+
+        opacity:.2;
+
+        transform:scale(1);
+
+    }
+
+}
+
+/* =========================
+   PÉTALAS
+========================= */
+
+#petal-container{
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    overflow:hidden;
+
+    z-index:3;
+
+}
+
+.petal{
+
+    position:absolute;
+
+    top:-50px;
+
+    font-size:22px;
+
+    animation-name:fallPetal;
+
+    animation-timing-function:linear;
+
+    animation-iteration-count:infinite;
+
+}
+
+@keyframes fallPetal{
+
+    from{
+
+        transform:
+        translateY(-50px)
+        rotate(0deg);
+
+    }
+
+    to{
+
+        transform:
+        translateY(120vh)
+        rotate(720deg);
+
+    }
+
+}
+
+/* =========================
+   VELAS
+========================= */
+
+.candle{
+
+    position:fixed;
+
+    bottom:30px;
+
+    width:70px;
+
+    height:160px;
+
+    border-radius:15px 15px 0 0;
+
+    background:
+
+    linear-gradient(
+        to right,
+        #e5d3a5,
+        #fff0cb,
+        #d9c28e
+    );
+
+    z-index:25;
+
+    box-shadow:
+    0 0 25px rgba(255,255,255,.15);
+
+}
+
+.candle-left{
+
+    left:30px;
+
+}
+
+.candle-right{
+
+    right:30px;
+
+}
+
+.flame{
+
+    position:absolute;
+
+    width:28px;
+
+    height:45px;
+
+    left:50%;
+
+    top:-35px;
+
+    transform:translateX(-50%);
+
+    border-radius:50%;
+
+    background:
+
+    radial-gradient(
+        circle,
+        #fff4c4,
+        gold,
+        orange
+    );
+
+    animation:flameDance .15s infinite alternate;
+
+    filter:blur(.4px);
+
+}
+
+@keyframes flameDance{
+
+    from{
+
+        transform:
+        translateX(-50%)
+        rotate(-3deg)
+        scale(1);
+
+    }
+
+    to{
+
+        transform:
+        translateX(-50%)
+        rotate(3deg)
+        scale(1.08);
+
+    }
+
+}
+
+/* =========================
+   CAPÍTULOS
+========================= */
+
+.page h2{
+
+    font-family:'Cinzel',serif;
+
+    color:#5a3916;
+
+    font-size:2rem;
+
+    margin-bottom:25px;
+
+    text-align:center;
+
+}
+
+.chapter-text{
+
+    font-size:1.7rem;
+
+    line-height:1.8;
+
+    white-space:pre-line;
+
+    text-align:center;
+
+}
+
+/* =========================
+   BORDA MEDIEVAL
+========================= */
+
+.page::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:15px;
+
+    border:2px
